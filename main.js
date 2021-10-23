@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8000/?action=';
+const API_URL = 'http://localhost:8000?action=';
 const fetchOptions = { credentials: 'include' };
 
 (async () => {
@@ -18,6 +18,9 @@ async function isUserGuest() {
 }
 
 async function handleGuest() {
+    const welcomeTextWrapper = document.querySelector('.welcome-text-wrapper');
+    welcomeTextWrapper.style.display = 'block';
+
     const signInBtn = document.createElement('button');
 
     const a = document.createElement('a');
