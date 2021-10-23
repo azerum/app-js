@@ -21,15 +21,13 @@ async function handleGuest() {
     const welcomeTextWrapper = document.querySelector('.welcome-text-wrapper');
     welcomeTextWrapper.style.display = 'block';
 
-    const signInBtn = document.createElement('button');
+    const url = await getOAuthUrl();
 
-    const a = document.createElement('a');
-    a.href = await getOAuthUrl();
-    a.target = '_self';
-    a.textContent = 'Sign in';
+    const signInBtn = document.querySelector('#sign_in_btn');
 
-    signInBtn.appendChild(a);
-    document.body.appendChild(signInBtn);
+    signInBtn.addEventListener('click', () => {
+        window.location = url;
+    });
 }
 
 async function getOAuthUrl() {
